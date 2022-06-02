@@ -1,0 +1,42 @@
+.notfound-container{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(85, 104, 104);
+  background-repeat: no-repeat;
+
+}
+.notfound{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top:10%;
+
+}
+.notfound h1{
+  color: rgb(247, 190, 6);
+  font-weight: bold;
+  font-size: 40px;
+}
+.notfound a{
+  text-decoration: none;
+  color:rgb(31, 30, 30);
+  font-weight: bold;
+  font-size:25px;
+  
+}
+.notfound button{
+  background-color: rgb(8, 191, 252);
+  border: none;
+  width: auto;
+  padding: 10px;
+ 
+
+}
+.notfound button:hover{
+  background-color: firebrick;
+  
+}
+.notfound a:hover{
+  color: rgb(212, 211, 211);
+}
+
