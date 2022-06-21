@@ -1,0 +1,30 @@
+.navbar{
+  background-color:#003580;
+  
+}
+
+.nav-content img{
+  width: 80px;
+  height:80px;
+}
+.nav-content h4{
+  font-weight: bold;
+  color: white;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+.navbar-toggler{
+  color: white;
+}
+.navbar-toggler-icon{
+  color: white;
+}
+.nav-item .nav-link{
+  color:white;
+  font-size:18px;
+  font-weight: 400;
+}
+.nav-item .nav-link:hover{
+  color: rgb(252, 6, 6);
+}
