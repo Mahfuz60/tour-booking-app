@@ -1,0 +1,27 @@
+.inspiration {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.inspirationItem {
+  position: relative;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 250px;
+  flex: 1;
+}
+.inspirationImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inspirationTitle {
+  color: rgb(248, 245, 245);
+  margin-top: -100px;
+  text-align: center;
+
+}
