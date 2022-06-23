@@ -8,7 +8,10 @@
 .headerContainer {
   width: 100%;
   max-width: 1024px;
-  margin: 20px 0px 100px 0px;
+  margin: 20px 0px 80px 0px;
+}
+.headerContainer.listMode {
+  margin: 20px 0px 0px 0px;
 }
 .headerList {
   display: flex;
@@ -74,7 +77,7 @@
 }
 .headerSearchBtn {
   border: none;
-  background-color: #BE1121;
+  background-color: #be1121;
   color: white;
   border-radius: 8px;
   padding: 5px;
@@ -86,6 +89,7 @@
 .headerCalendar {
   position: absolute;
   top: 37px;
+  z-index: 2;
 }
 
 /*option*/
@@ -98,6 +102,7 @@
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.664);
   box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.664);
+  z-index: 2;
 }
 .optionItem {
   width: 200px;
@@ -106,27 +111,27 @@
   justify-content: space-between;
   margin: 10px;
 }
-.optionText{
+.optionText {
   font-weight: 500;
 }
-.optionCounter{
+.optionCounter {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.optionCounterBtn{
+.optionCounterBtn {
   background-color: #003580;
   border: none;
   border-radius: 5px;
   color: white;
-  font-size:20px;
-  width: 50px;
+  font-size: 20px;
+  width:40px;
   cursor: pointer;
 }
-.optionCounterBtn:disabled{
+.optionCounterBtn:disabled {
   cursor: not-allowed;
 }
-.optionNumber{
+.optionNumber {
   font-weight: 500;
   color: black;
 }
