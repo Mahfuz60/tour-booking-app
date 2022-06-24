@@ -1,6 +1,7 @@
 import React from 'react';
 import Features from '../../Features/Features';
 import FeaturesProperties from '../../FeaturesProperties/FeaturesProperties';
+import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
 import Inspiration from '../../Inspiration/Inspiration';
 import MailList from '../../MailList/MailList';
@@ -16,7 +17,8 @@ const Home = () => {
         <Inspiration />
         <Property />
         <FeaturesProperties />
-        <MailList/>
+        <MailList />
+        <Footer />
       </div>
     </div>
   );
