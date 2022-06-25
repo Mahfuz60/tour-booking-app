@@ -5,6 +5,7 @@ import Header from '../../Header/Header';
 import './Hotelist.css';
 import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
+import SearchItem from '../SearchItem/SearchItem';
 
 const HotelList = () => {
   const location = useLocation();
@@ -66,7 +67,16 @@ const HotelList = () => {
             </div>
             <button className='searchBtn'>Search</button>
           </div>
-          <div className='listResult'></div>
+          <div className='listResult'>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+           
+          </div>
         </div>
       </div>
     </div>

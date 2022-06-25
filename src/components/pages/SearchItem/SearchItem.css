@@ -1,0 +1,98 @@
+.searchItem {
+  border: 1px solid lightgray;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+  max-height: max-content;
+}
+.searchItem_img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.searchDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 2;
+}
+.search_Title {
+  font-size: 20px;
+  color: #0655c4;
+  font-weight: bold;
+}
+.search_Taxi {
+  background-color: rgb(2, 85, 27);
+  font-size: 15px;
+  color: white;
+  max-width: max-content;
+  border-radius: 5px;
+  padding: 3px;
+}
+.search_Subtitle {
+  font-size: 12px;
+  font-weight: bold;
+}
+.search_Features {
+  font-size: 15px;
+}
+.search_Cancel {
+  font-size: 15px;
+  font-weight: bold;
+  color: #04a079;
+}
+.Cancel_Subtitle {
+  font-size: 15px;
+  color: #04a079;
+  border-radius: 5px;
+  padding: 3px;
+  font-weight: 400;
+}
+.searchItem_Detail {
+  flex: 1;
+  justify-content: space-between;
+}
+.rating_Title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #0655c4;
+}
+.search_Rating > span {
+  font-weight: bold;
+  color: rgb(112, 110, 110);
+  padding: 5px;
+}
+.search_Rating > button {
+  background-color: #0655c4;
+  border: none;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+}
+.search_DetailTexts {
+  margin-bottom: 10px;
+}
+.search_Price {
+  display: flex;
+  color: rgb(29, 29, 29);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.search_Tax {
+  display: flex;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+.search_CheckButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #0655c4;
+  padding:10px 5px;
+  font-size: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
