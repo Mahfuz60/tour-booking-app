@@ -11,16 +11,17 @@
   
 }
 .propertiesItem {
-  height: 300px;
-  width:320px;
-  border: 1px solid rgba(128, 128, 128, 0.411);
+  flex:1;
   border-radius: 10px;
-  gap: 20px;
+  overflow: hidden;
+  cursor: pointer;
 
 }
-.propertiesItem img {
-  height: 180px;
+.propertiesImg {
   width: 100%;
-  padding-bottom: 10px;
-  border-radius: 10px;
+  height: 150px;
+  object-fit: cover;
+}
+.propertiesItem h5{
+  text-transform: capitalize;
 }
