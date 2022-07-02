@@ -1,27 +1,27 @@
-.properties {
-  width: 100%;
-  max-width: 1024px;
-  align-items: center;
-  justify-content: space-between;
-}
 .properties-header {
   font-size: 30px;
   font-weight: bold;
   color: #003580;
-  
 }
-.propertiesItem {
-  flex:1;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
 
+.propertiesItem card {
+  width: auto;
+  display: flex;
+  height: auto;
 }
 .propertiesImg {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
 }
-.propertiesItem h5{
+.propertiesItem h5 {
   text-transform: capitalize;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.propertiesItem p {
+  text-transform: capitalize;
+  text-align: left;
+  font-weight: 500;
 }

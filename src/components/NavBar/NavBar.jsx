@@ -12,6 +12,7 @@ const NavBar = () => {
         <div className='container-fluid'>
           <div className='nav-content d-flex mx-2'>
             <img src={logo} alt='' />
+
             <h4>Travel BD</h4>
           </div>
           <button

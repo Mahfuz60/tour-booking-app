@@ -17,25 +17,26 @@ const Property = () => {
     'https://t-cf.bstatic.com/static/img/theme-index/carousel_320x240/bg_guest_house/70618d86d515349ce56296a56d2eaaf283fd1542.jpg',
   ];
   return (
-    <div className=' mt-5'>
-      <div className='properties'>
-        <h3 className='properties-header py-3 '>Browse by property type</h3>
-        <div>
+    <div className='container mt-5'>
+      <h3 className='properties-header py-3 '>Browse by property type</h3>
+
+      <div>
+        <div className='row d-flex'>
           {isLoading ? (
             <p>loading....</p>
           ) : (
             <>
               {isData &&
                 images.map((img, i) => (
-                 
-                    <div className='propertiesItem ' key={i}>
-                      <img src={img} alt='' className='propertiesImg'/>
+                  <div className='propertiesItem col-sm-6 col-md-4  col-10' key={i}>
+                    <div className='card'>
+                      <img src={img} alt='' className='propertiesImg' />
                       <h5>{isData[i]?.type}</h5>
                       <p>
                         {isData[i]?.count} {isData[i]?.type}
                       </p>
                     </div>
-                  
+                  </div>
                 ))}
             </>
           )}
