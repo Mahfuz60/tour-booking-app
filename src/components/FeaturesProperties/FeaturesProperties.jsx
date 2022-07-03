@@ -27,7 +27,7 @@ const FeaturesProperties = () => {
                   {item.rating && (
                     <div className='fp-rating'>
                       <button>{item.rating}</button>
-                      <span>Wonderful</span>
+                      <span>{item.review}</span>
                     </div>
                   )}
                 </div>

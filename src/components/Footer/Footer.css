@@ -1,17 +1,8 @@
-.footer {
-  margin-top: -18px;
-  width: 100%;
-  max-width: 1024px;
-}
-.footerLists {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  width:100%;
-}
-
 .footerList ul li {
   list-style: none;
+  text-align:left;
+  width:100%;
+  margin-right: 15px;
 }
 .footerList {
   color:#00224F;
@@ -23,6 +14,7 @@
 }
 .footerText{
   margin-top: 10px;
+  padding: 5px;
   color: rgb(80, 79, 79);
   text-align: center;
   line-height: normal;
