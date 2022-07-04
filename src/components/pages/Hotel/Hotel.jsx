@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import MailList from '../../MailList/MailList';
 import Footer from '../../Footer/Footer';
+import useFetch from '../../hooks/useFetch';
 
 const Hotel = () => {
+  // const { isData, isLoading, error, reFetchData } = useFetch(`http://localhost:5000/api/hotels`);
+ 
   const photos = [
     {
       src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1',

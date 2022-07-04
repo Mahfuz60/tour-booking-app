@@ -6,7 +6,6 @@
 
 .propertiesItem card {
   width: auto;
-  display: flex;
   height: auto;
 }
 .propertiesImg {

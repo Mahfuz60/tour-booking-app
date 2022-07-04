@@ -8,7 +8,8 @@
   margin: 10px;
   border-radius: 5px;
   padding: 5px;
-  width: 280px;
+  width: 270px;
+  height: 350px;
   border: 1px solid rgba(128, 128, 128, 0.527);
   text-align: center;
 }
