@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../../Header/Header';
 import './Hotel.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,11 +7,14 @@ import MailList from '../../MailList/MailList';
 import Footer from '../../Footer/Footer';
 import useFetch from '../../hooks/useFetch';
 import { useLocation } from 'react-router-dom';
+import { SearchContext } from '../../context/searchContext';
 
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
   const { isData, isLoading, error, reFetchData } = useFetch(`http://localhost:5000/api/hotels/find/${id}`);
+  const { dates } = useContext(SearchContext);
+  console.log(dates);
 
   const photos = [
     {

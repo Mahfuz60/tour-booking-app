@@ -11,8 +11,8 @@ import useFetch from '../../hooks/useFetch';
 const HotelList = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
-  const [date, setDate] = useState(location.state.date);
-  const [option, setOption] = useState(location.state.option);
+  const [dates, setDates] = useState(location.state.dates);
+  const [options, setOptions] = useState(location.state.options);
   const [openDate, setOpenDate] = useState(false);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
@@ -37,9 +37,9 @@ const HotelList = () => {
               <div className='listItem'>
                 <label>check-in date</label>
                 <span className='listInput' onClick={() => setOpenDate(!openDate)}>
-                  {`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(date[0].endDate, 'MM/dd/yyyy')}`}
+                  {`${format(dates[0].startDate, 'MM/dd/yyyy')} to ${format(dates[0].endDate, 'MM/dd/yyyy')}`}
                 </span>
-                {openDate && <DateRange onChange={(item) => setDate([item.selection])} ranges={date} minDate={new Date()} />}
+                {openDate && <DateRange onChange={(item) => setDates([item.selection])} ranges={dates} minDate={new Date()} />}
               </div>
 
               <div className='listItem'>
@@ -59,17 +59,17 @@ const HotelList = () => {
                   </div>
                   <div className='listItemOption'>
                     <span className='listOptionText'>
-                      Adult <input min={1} type='number' className='listOptionInput' placeholder={option.adult} />
+                      Adult <input min={1} type='number' className='listOptionInput' placeholder={setOptions.adult} />
                     </span>
                   </div>
                   <div className='listItemOption'>
                     <span className='listOptionText'>
-                      Children <input min={0} type='number' className='listOptionInput' placeholder={option.children} />
+                      Children <input min={0} type='number' className='listOptionInput' placeholder={options.children} />
                     </span>
                   </div>
                   <div className='listItemOption'>
                     <span className='listOptionText'>
-                      Room <input min={1} type='number' className='listOptionInput' placeholder={option.room} />
+                      Room <input min={1} type='number' className='listOptionInput' placeholder={options.room} />
                     </span>
                   </div>
                 </div>

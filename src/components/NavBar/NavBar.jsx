@@ -13,7 +13,10 @@ const NavBar = () => {
           <div className='nav-content d-flex mx-2'>
             <img src={logo} alt='' />
 
-            <h4>Travel BD</h4>
+            <Link to='/' style={{ textDecoration: 'none' }}>
+            
+              <h4>Travel BD</h4>
+            </Link>
           </div>
           <button
             className='navbar-toggler'

@@ -7,25 +7,30 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { SearchContext } from '../context/searchContext';
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([{ startDate: new Date(), endDate: new Date(), key: 'selection' }]);
-  const [option, setOption] = useState({ adult: 1, children: 0, room: 1 });
+  const [dates, setDates] = useState([{ startDate: new Date(), endDate: new Date(), key: 'selection' }]);
+  const [options, setOptions] = useState({ adult: 1, children: 0, room: 1 });
   const [openOption, setOpenOption] = useState(false);
   const [destination, setDestination] = useState('');
 
   const handleOption = (name, operation) => {
-    setOption((prev) => {
+    setOptions((prev) => {
       return {
         ...prev,
-        [name]: operation === 'increment' ? option[name] + 1 : option[name] - 1,
+        [name]: operation === 'increment' ? options[name] + 1 : options[name] - 1,
       };
     });
   };
   const navigate = useNavigate();
+  //context api used
+  const { dispatch } = useContext(SearchContext);
   const heandleSearch = () => {
-    navigate('/hotelList', { state: { destination, date, option } });
+    dispatch({ type: 'NEW-SEARCH', payload: { destination, dates, options } });
+    navigate('/hotelList', { state: { destination, dates, options } });
   };
   return (
     <div className='header'>
@@ -72,15 +77,15 @@ const Header = ({ type }) => {
               <div className='headerSearchItem'>
                 <FontAwesomeIcon icon={faCalendar} className='headerIcon' />
                 <span className='headerInputText' onClick={() => setOpenDate(!openDate)}>
-                  {`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(date[0].endDate, 'MM/dd/yyyy')}`}
+                  {`${format(dates[0].startDate, 'MM/dd/yyyy')} to ${format(dates[0].endDate, 'MM/dd/yyyy')}`}
                 </span>
                 {openDate && (
                   <DateRange
                     className='headerCalendar'
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     minDate={new Date()}
                   />
                 )}
@@ -90,7 +95,7 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setOpenOption(!openOption)}
                   className='headerInputText'
-                >{`${option.adult} adult , ${option.children} children , ${option.room} room`}</span>
+                >{`${options.adult} adult , ${options.children} children , ${options.room} room`}</span>
                 {openOption && (
                   <div className='option'>
                     <div className='optionItem'>
@@ -99,8 +104,8 @@ const Header = ({ type }) => {
                         <button className='optionCounterBtn ' onClick={() => handleOption('adult', 'increment')}>
                           +
                         </button>
-                        <span className='optionNumber'>{option.adult}</span>
-                        <button disabled={option.adult <= 1} className='optionCounterBtn' onClick={() => handleOption('adult', 'decrement')}>
+                        <span className='optionNumber'>{options.adult}</span>
+                        <button disabled={options.adult <= 1} className='optionCounterBtn' onClick={() => handleOption('adult', 'decrement')}>
                           -
                         </button>
                       </div>
@@ -111,8 +116,8 @@ const Header = ({ type }) => {
                         <button className='optionCounterBtn ' onClick={() => handleOption('children', 'increment')}>
                           +
                         </button>
-                        <span className='optionNumber'>{option.children}</span>
-                        <button disabled={option.children <= 0} className='optionCounterBtn' onClick={() => handleOption('children', 'decrement')}>
+                        <span className='optionNumber'>{options.children}</span>
+                        <button disabled={options.children <= 0} className='optionCounterBtn' onClick={() => handleOption('children', 'decrement')}>
                           -
                         </button>
                       </div>
@@ -123,8 +128,8 @@ const Header = ({ type }) => {
                         <button className='optionCounterBtn ' onClick={() => handleOption('room', 'increment')}>
                           +
                         </button>
-                        <span className='optionNumber'>{option.room}</span>
-                        <button disabled={option.room <= 1} className='optionCounterBtn' onClick={() => handleOption('room', 'decrement')}>
+                        <span className='optionNumber'>{options.room}</span>
+                        <button disabled={options.room <= 1} className='optionCounterBtn' onClick={() => handleOption('room', 'decrement')}>
                           -
                         </button>
                       </div>
