@@ -1,5 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHotel, faBed, faCar, faPlane, faTaxi, faCalendar, faPerson } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHotel,
+  faBed,
+  faCar,
+  faPlane,
+  faTaxi,
+  faCalendar,
+  faPerson,
+} from '@fortawesome/free-solid-svg-icons';
 import './Header.css';
 import { useState } from 'react';
 import { DateRange } from 'react-date-range';
@@ -12,7 +20,9 @@ import { SearchContext } from '../context/searchContext';
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
-  const [dates, setDates] = useState([{ startDate: new Date(), endDate: new Date(), key: 'selection' }]);
+  const [dates, setdates] = useState([
+    { startDate: new Date(), endDate: new Date(), key: 'selection' },
+  ]);
   const [options, setOptions] = useState({ adult: 1, children: 0, room: 1 });
   const [openOption, setOpenOption] = useState(false);
   const [destination, setDestination] = useState('');
@@ -28,8 +38,10 @@ const Header = ({ type }) => {
   const navigate = useNavigate();
   //context api used
   const { dispatch } = useContext(SearchContext);
+
   const heandleSearch = () => {
     dispatch({ type: 'NEW-SEARCH', payload: { destination, dates, options } });
+
     navigate('/hotelList', { state: { destination, dates, options } });
   };
   return (
@@ -61,7 +73,8 @@ const Header = ({ type }) => {
           <>
             <h3 className='headerTitle fw-bold'>A lifetime of discounts? It's Genius.</h3>
             <p className='headerDescription'>
-              Get rewarded for your travels unlock instant saving of 10% or more with a free Travel BD Booking Account.
+              Get rewarded for your travels unlock instant saving of 10% or more with a free Travel
+              BD Booking Account.
             </p>
             <button className='headerBtn'>Sign in/Register</button>
             <div className='headerSearch'>
@@ -77,13 +90,16 @@ const Header = ({ type }) => {
               <div className='headerSearchItem'>
                 <FontAwesomeIcon icon={faCalendar} className='headerIcon' />
                 <span className='headerInputText' onClick={() => setOpenDate(!openDate)}>
-                  {`${format(dates[0].startDate, 'MM/dd/yyyy')} to ${format(dates[0].endDate, 'MM/dd/yyyy')}`}
+                  {`${format(dates[0].startDate, 'MM/dd/yyyy')} to ${format(
+                    dates[0].endDate,
+                    'MM/dd/yyyy'
+                  )}`}
                 </span>
                 {openDate && (
                   <DateRange
                     className='headerCalendar'
                     editableDateInputs={true}
-                    onChange={(item) => setDates([item.selection])}
+                    onChange={(item) => setdates([item.selection])}
                     moveRangeOnFirstSelection={false}
                     ranges={dates}
                     minDate={new Date()}
@@ -101,11 +117,18 @@ const Header = ({ type }) => {
                     <div className='optionItem'>
                       <span className='optionText'>Adult</span>
                       <div className='optionCounter'>
-                        <button className='optionCounterBtn ' onClick={() => handleOption('adult', 'increment')}>
+                        <button
+                          className='optionCounterBtn '
+                          onClick={() => handleOption('adult', 'increment')}
+                        >
                           +
                         </button>
                         <span className='optionNumber'>{options.adult}</span>
-                        <button disabled={options.adult <= 1} className='optionCounterBtn' onClick={() => handleOption('adult', 'decrement')}>
+                        <button
+                          disabled={options.adult <= 1}
+                          className='optionCounterBtn'
+                          onClick={() => handleOption('adult', 'decrement')}
+                        >
                           -
                         </button>
                       </div>
@@ -113,11 +136,18 @@ const Header = ({ type }) => {
                     <div className='optionItem'>
                       <span className='optionText'>Children</span>
                       <div className='optionCounter'>
-                        <button className='optionCounterBtn ' onClick={() => handleOption('children', 'increment')}>
+                        <button
+                          className='optionCounterBtn '
+                          onClick={() => handleOption('children', 'increment')}
+                        >
                           +
                         </button>
                         <span className='optionNumber'>{options.children}</span>
-                        <button disabled={options.children <= 0} className='optionCounterBtn' onClick={() => handleOption('children', 'decrement')}>
+                        <button
+                          disabled={options.children <= 0}
+                          className='optionCounterBtn'
+                          onClick={() => handleOption('children', 'decrement')}
+                        >
                           -
                         </button>
                       </div>
@@ -125,11 +155,18 @@ const Header = ({ type }) => {
                     <div className='optionItem'>
                       <span className='optionText'>Room</span>
                       <div className='optionCounter'>
-                        <button className='optionCounterBtn ' onClick={() => handleOption('room', 'increment')}>
+                        <button
+                          className='optionCounterBtn '
+                          onClick={() => handleOption('room', 'increment')}
+                        >
                           +
                         </button>
                         <span className='optionNumber'>{options.room}</span>
-                        <button disabled={options.room <= 1} className='optionCounterBtn' onClick={() => handleOption('room', 'decrement')}>
+                        <button
+                          disabled={options.room <= 1}
+                          className='optionCounterBtn'
+                          onClick={() => handleOption('room', 'decrement')}
+                        >
                           -
                         </button>
                       </div>

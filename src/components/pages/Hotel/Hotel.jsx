@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Header from '../../Header/Header';
 import './Hotel.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,13 +7,15 @@ import MailList from '../../MailList/MailList';
 import Footer from '../../Footer/Footer';
 import useFetch from '../../hooks/useFetch';
 import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
 import { SearchContext } from '../../context/searchContext';
 
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
-  const { isData, isLoading, error, reFetchData } = useFetch(`http://localhost:5000/api/hotels/find/${id}`);
-  const { dates } = useContext(SearchContext);
+  const { isData, isLoading } = useFetch(`http://localhost:5000/api/hotels/find/${id}`);
+
+  const { dates, options, city } = useContext(SearchContext);
   console.log(dates);
 
   const photos = [
@@ -54,7 +56,9 @@ const Hotel = () => {
             <span className='hotelDistance'>
               {isData.review} location – {isData.distance}m from center
             </span>
-            <span className='hotelPriceHighlight'>Book a stay over ${isData.cheapestPrice} at this property and get a free airport taxi</span>
+            <span className='hotelPriceHighlight'>
+              Book a stay over ${isData.cheapestPrice} at this property and get a free airport taxi
+            </span>
             <div className='hotelImages'>
               {photos.map((photo, index) => (
                 <div className='hotelImgWraper' key={index}>
@@ -66,15 +70,21 @@ const Hotel = () => {
               <div className='hotelDetailsText'>
                 <h1 className='hotelDetails_Title'>Stay in the heart of {isData.city} City</h1>
                 <p className='hotelDesc'>
-                  {isData.desc} The units come with hardwood floors and feature a fully equipped kitchenette with a microwave, a flat-screen TV, and a
-                  private bathroom with shower and a hairdryer. A fridge is also offered, as well as an electric tea pot and a coffee machine. Popular
-                  points of interest near the apartment include Cloth Hall, Main Market Square and Town Hall Tower. The nearest airport is John Paul
-                  II International Kraków–Balice, 16.1 km from Tower Street Apartments, and the property offers a paid airport shuttle service.
+                  {isData.desc} The units come with hardwood floors and feature a fully equipped
+                  kitchenette with a microwave, a flat-screen TV, and a private bathroom with shower
+                  and a hairdryer. A fridge is also offered, as well as an electric tea pot and a
+                  coffee machine. Popular points of interest near the apartment include Cloth Hall,
+                  Main Market Square and Town Hall Tower. The nearest airport is John Paul II
+                  International Kraków–Balice, 16.1 km from Tower Street Apartments, and the
+                  property offers a paid airport shuttle service.
                 </p>
               </div>
               <div className='hotelDetailsPrice'>
                 <h1>Perfect for a 9-night stay!</h1>
-                <span>Located in the real heart of Krakow, this property has an excellent location score of 9.8!</span>
+                <span>
+                  Located in the real heart of Krakow, this property has an excellent location score
+                  of 9.8!
+                </span>
                 <h2>
                   <b>$945</b> (9 nights)
                 </h2>
