@@ -17,13 +17,21 @@ const Hotel = () => {
 
   const { dates, options } = useContext(SearchContext);
 
-  const mili_Second_Per_Day = 1000 * 60 * 60 * 24;
-  function dayDifference(date1, date2) {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-    const daysDiff = Math.ceil(timeDiff / mili_Second_Per_Day);
-    return daysDiff;
-  }
-  console.log(dayDifference(dates[0].endDate - dates[0].startDate));
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  const dayDifference = (date1, date2) => {
+    const timeDiff = Math.abs(Date.parse(date2) - Date.parse(date1));
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  };
+  // function dayDifference(date1, date2) {
+  //   const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  //   const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+  //   return diffDays;
+  // }
+
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+
+  const handleReserve = () => {};
 
   const photos = [
     {
@@ -54,7 +62,9 @@ const Hotel = () => {
       ) : (
         <div className='hotelContainer'>
           <div className='hotelWraper'>
-            <button className='bookNow'>Reserve or Book Now!</button>
+            <button className='bookNow' onClick={handleReserve}>
+              Reserve or Book Now!
+            </button>
             <h1 className='hotelHeader'>{isData.name}</h1>
             <div className='hotelAddress'>
               <FontAwesomeIcon icon={faLocationDot} />
@@ -87,15 +97,15 @@ const Hotel = () => {
                 </p>
               </div>
               <div className='hotelDetailsPrice'>
-                <h1>Perfect for a -night stay!</h1>
+                <h1>Perfect for a -{days + 1} night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an excellent location score
-                  of 9.8!
+                  of {isData.rating}!
                 </span>
                 <h2>
-                  <b>$945</b> (9 nights)
+                  <b>${(days + 1) * (isData.cheapestPrice * options.room)}</b> ,{days + 1} night
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick={handleReserve}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
