@@ -8,7 +8,7 @@ import Footer from '../../Footer/Footer';
 import useFetch from '../../hooks/useFetch';
 import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
-import { SearchContext } from '../../context/searchContext';
+import { SearchContext } from '../../context/SearchContext';
 
 const Hotel = () => {
   const location = useLocation();
@@ -103,7 +103,7 @@ const Hotel = () => {
                   of {isData.rating}!
                 </span>
                 <h2>
-                  <b>${(days + 1) * (isData.cheapestPrice * options.room)}</b> ,{days + 1} night
+                  <b>${(days + 1) * (isData.cheapestPrice * options.room)}</b>({days + 1} night)
                 </h2>
                 <button onClick={handleReserve}>Reserve or Book Now!</button>
               </div>

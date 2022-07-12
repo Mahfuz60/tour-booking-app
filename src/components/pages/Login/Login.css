@@ -1,0 +1,10 @@
+.loginBg {
+  background-color: rgba(35, 76, 190, 0.384);
+  width: 100%;
+  height: 100vh;
+}
+
+.loginUser{
+  text-align: center;
+  width: 60%;
+}
