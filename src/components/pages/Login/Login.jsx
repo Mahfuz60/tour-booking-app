@@ -3,41 +3,55 @@ import './Login.css';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { AuthContext } from '../../context/AuthContex';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [login, setLogin] = useState({
+  const [isLogin, setIsLogin] = useState({
     userName: undefined,
     password: undefined,
   });
 
-  const { loading, error, dispatch } = useContext(AuthContext);
+  const { user, loading, error, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    setIsLogin((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    dispatch({ type: 'USER_LOGIN' });
+    try {
+      const res = await axios.post('http://localhost:5000/api/auth/login', isLogin);
+      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+      navigate('/');
+    } catch (err) {
+      dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
+    }
+  };
   return (
     <div className='loginBg'>
       <div className='container '>
         <div className='row'>
-          <h1 className='text-center'>User Login</h1>
-          <div className='col-md-10 col-10'>
-            <div className='loginUser'>
-              <label htmlFor=''>UserName:</label>
-              <input
-                type='text'
-                placeholder='Enter Your Name'
-                id='userName'
-                onChange={handleChange}
-              />
-            </div>
-            <div className='loginUser'>
-              <label htmlFor=''>Password:</label>
+          <div className=' col-8 loginForm'>
+            <h2 className='loginHeader'>Please Login</h2>
+            <div className='loginInput'>
+              <input type='text' placeholder='User Name' id='userName' onChange={handleChange} />
+              <br />
               <input
                 type='password'
-                placeholder='Enter Your Password'
+                placeholder='User Password'
                 id='password'
                 onChange={handleChange}
               />
+              <br />
+              <button disabled={loading} onClick={handleLogin}>
+                LOGIN
+              </button>
+              <br />
+              {error && <span className='loginError'>{error.message}</span>}
             </div>
-            <button>LOGIN</button>
           </div>
         </div>
       </div>
