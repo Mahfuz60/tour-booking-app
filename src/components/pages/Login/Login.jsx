@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { AuthContext } from '../../context/AuthContex';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState({
@@ -49,6 +49,10 @@ const Login = () => {
               <button disabled={loading} onClick={handleLogin}>
                 LOGIN
               </button>
+              <br />
+              <Link to='/register' className='registerLink'>
+                <p>New User? Please Register</p>
+              </Link>
               <br />
               {error && <span className='loginError'>{error.message}</span>}
             </div>

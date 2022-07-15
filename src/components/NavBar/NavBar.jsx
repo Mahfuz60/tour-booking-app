@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.css';
 import logo from '../../assest/images/logo.png';
+import { AuthContext } from '../context/AuthContex';
 
 const NavBar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <nav className='navbar navbar-expand-lg '>
@@ -14,7 +16,6 @@ const NavBar = () => {
             <img src={logo} alt='' />
 
             <Link to='/' style={{ textDecoration: 'none' }}>
-            
               <h4>Travel BD</h4>
             </Link>
           </div>
@@ -48,16 +49,17 @@ const NavBar = () => {
                   Contact
                 </Link>
               </li>
-              <li className='nav-item'>
-                <Link to='/register' className='nav-link'>
-                  Register
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link to='/login' className='nav-link'>
-                  Login
-                </Link>
-              </li>
+
+              {!user ? (
+                <li className='nav-item'>
+                  <Link to='/login' className='nav-link'>
+                    Login
+                  </Link>
+                </li>
+              ) : (
+                <li className='nav-item '><h3 className='nav-link mt-1'>
+                  {user.userName}</h3></li>
+              )}
             </ul>
           </div>
         </div>

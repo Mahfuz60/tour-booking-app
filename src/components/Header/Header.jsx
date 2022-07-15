@@ -14,8 +14,9 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/SearchContext';
+import { AuthContext } from '../context/AuthContex';
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -43,6 +44,7 @@ const Header = ({ type }) => {
 
     navigate('/hotelList', { state: { destination, dates, options } });
   };
+  const { user } = useContext(AuthContext);
   return (
     <div className='header'>
       <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
@@ -75,7 +77,11 @@ const Header = ({ type }) => {
               Get rewarded for your travels unlock instant saving of 10% or more with a free Travel
               BD Booking Account.
             </p>
-            <button className='headerBtn'>Sign in/Register</button>
+            {!user && (
+              <Link to='/login'>
+                <button className='headerBtn'>Sign in/Register</button>
+              </Link>
+            )}
             <div className='headerSearch'>
               <div className='headerSearchItem'>
                 <FontAwesomeIcon icon={faBed} className='headerIcon' />

@@ -4,7 +4,6 @@ const INITIAL_STATE = {
   city: undefined,
   // dates: [],
   dates: JSON.parse(localStorage.getItem('dates')) || [],
-  // options: JSON.parse(localStorage.getItem('options')) ||
   options: JSON.parse(localStorage.getItem('options')) || {
     adult: undefined,
     children: undefined,
