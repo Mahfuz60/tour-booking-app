@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthContex';
 
 const NavBar = () => {
   const { user } = useContext(AuthContext);
+
   return (
     <>
       <nav className='navbar navbar-expand-lg '>
@@ -57,9 +58,13 @@ const NavBar = () => {
                   </Link>
                 </li>
               ) : (
-                <li className='nav-item '><h3 className='nav-link mt-1'>
-                  {user.userName}</h3></li>
+                <li className='nav-item '>
+                  <h3 className='nav-link mt-1'>{user.userName}</h3>
+                </li>
               )}
+              <li className='nav-item'>
+                <button className='nav-link'>LogOut</button>
+              </li>
             </ul>
           </div>
         </div>

@@ -23,16 +23,9 @@ const Hotel = () => {
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   };
-  // function dayDifference(date1, date2) {
-  //   const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-  //   const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-  //   return diffDays;
-  // }
 
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
-  const handleReserve = () => {};
-  
   const photos = [
     {
       src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1',
@@ -62,9 +55,7 @@ const Hotel = () => {
       ) : (
         <div className='hotelContainer'>
           <div className='hotelWraper'>
-            <button className='bookNow' onClick={handleReserve}>
-              Reserve or Book Now!
-            </button>
+            <button className='bookNow'>Reserve or Book Now!</button>
             <h1 className='hotelHeader'>{isData.name}</h1>
             <div className='hotelAddress'>
               <FontAwesomeIcon icon={faLocationDot} />
@@ -105,7 +96,7 @@ const Hotel = () => {
                 <h2>
                   <b>${(days + 1) * (isData.cheapestPrice * options.room)}</b>({days + 1} night)
                 </h2>
-                <button onClick={handleReserve}>Reserve or Book Now!</button>
+                <button>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
