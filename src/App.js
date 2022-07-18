@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import NotFound from './components/NotFound/NotFound';
+import DashBoard from './components/pages/Admin/DashBoard/DashBoard';
+import PrivateRotue from './components/pages/Admin/PrivateRoute/PrivateRotue';
 import Home from './components/pages/Home/Home';
 import Hotel from './components/pages/Hotel/Hotel';
 import HotelList from './components/pages/HotelList/HotelList';
@@ -10,13 +12,29 @@ function App() {
   return (
     <div>
       <Router>
-        <NavBar/>
+        <NavBar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/hotelList' element={<HotelList />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route
+            path='/hotelList'
+            element={
+              <PrivateRotue>
+                <HotelList />
+              </PrivateRotue>
+            }
+          />
           <Route path='/hotel/:id' element={<Hotel />} />
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/register' element={<Register/>}/>
+          <Route
+            path='/dashboard'
+            element={
+              <PrivateRotue>
+                <DashBoard />
+              </PrivateRotue>
+            }
+          />
+
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
