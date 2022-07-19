@@ -8,6 +8,10 @@ import { AuthContext } from '../context/AuthContex';
 
 const NavBar = () => {
   const { user } = useContext(AuthContext);
+  const handleClick = () => {
+    localStorage.clear();
+   
+  };
 
   return (
     <>
@@ -45,11 +49,6 @@ const NavBar = () => {
                   About
                 </Link>
               </li>
-              <li className='nav-item'>
-                <Link to='/dashboard' className='nav-link'>
-                  Dashboard
-                </Link>
-              </li>
 
               {!user ? (
                 <li className='nav-item'>
@@ -63,7 +62,9 @@ const NavBar = () => {
                 </li>
               )}
               <li className='nav-item'>
-                <button className='nav-link'>LogOut</button>
+                <button className='nav-link' onClick={handleClick}>
+                  LogOut
+                </button>
               </li>
             </ul>
           </div>
