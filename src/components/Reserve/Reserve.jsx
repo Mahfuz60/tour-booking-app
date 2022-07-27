@@ -48,7 +48,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
    try{
     await Promise.all(
       selectedRooms.map(roomId=>{
-        const res= axios.put(`http://localhost:5000/api/rooms/availability/${roomId}`,{
+        const res= axios.put(`https://tour-booking-server.herokuapp.com/api/rooms/availability/${roomId}`,{
           dates:allDates,
         });
         return res.data;

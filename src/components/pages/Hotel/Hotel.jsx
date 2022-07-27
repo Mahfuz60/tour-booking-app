@@ -16,7 +16,7 @@ import Reserve from '../../Reserve/Reserve';
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
-  const { isData, isLoading } = useFetch(`http://localhost:5000/api/hotels/find/${id}`);
+  const { isData, isLoading } = useFetch(`https://tour-booking-server.herokuapp.com/api/hotels/find/${id}`);
 
   const { dates, options } = useContext(SearchContext);
 

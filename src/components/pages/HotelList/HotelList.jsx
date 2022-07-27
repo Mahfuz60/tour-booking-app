@@ -18,7 +18,7 @@ const HotelList = () => {
   const [max, setMax] = useState(undefined);
 
   const { isData, isLoading, reFetchData } = useFetch(
-    `http://localhost:5000/api/hotels/?city=${destination}&min=${min || 0}  &max=${max || 999} `
+    `https://tour-booking-server.herokuapp.com/api/hotels/?city=${destination}&min=${min || 0}  &max=${max || 999} `
   );
   const handleSearch = () => {
     reFetchData();

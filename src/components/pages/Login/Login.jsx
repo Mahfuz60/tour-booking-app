@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: 'USER_LOGIN' });
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', isLogin);
+      const res = await axios.post('https://tour-booking-server.herokuapp.com/api/auth/login', isLogin);
       if (res.data.isAdmin) {
         dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
         navigate('/');

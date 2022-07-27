@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     dispatch({ type: 'USER_REGISTER' });
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', isRegister);
+      const res = await axios.post('https://tour-booking-server.herokuapp.com/api/auth/register', isRegister);
       dispatch({ type: 'REGISTER_SUCCESS', payload: res.data.details });
       navigate('/login');
     } catch (err) {

@@ -3,7 +3,9 @@ import useFetch from '../hooks/useFetch';
 import './FeaturesProperties.css';
 
 const FeaturesProperties = () => {
-  const { isData, isLoading, error } = useFetch('http://localhost:5000/api/hotels?featured=true&limit=9');
+  const { isData, isLoading, error } = useFetch(
+    'https://tour-booking-server.herokuapp.com/api/hotels?featured=true&limit=9'
+  );
   return (
     <div className='container mt-3'>
       <h3 className='fp-header pt-3'>Homes guests love</h3>
